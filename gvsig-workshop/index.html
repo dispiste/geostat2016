@@ -70,7 +70,7 @@
                         <p>The following software is required for the course:</p>
                         <ul>
                             <li>gvSIG 2.3.0 rc4 (or later)</li>
-                            <li>Rexternal (gvSIG plugin)</li>
+                            <li>gvSIG-Rexternal (gvSIG plugin)</li>
                             <!--<li>JGrass (gvSIG plugin)</li>-->
                             <li>R statistical software</li>
                         </ul>
@@ -78,9 +78,9 @@
                     </section>
                     <section>
                         <h2>gvSIG 2.3.0 rc4 (or later)</h2>
-                        <p>Get the software from the <a href="http://www.gvsig.com/en/products/gvsig-desktop/development-versions-downloads" target="_blank"><em>Development versions download</em></a> section at <a href="https://gvsig.com">gvsig.com</a></p>
                         <ul>
-                            <li>The regular version is recommended</li>
+                            <li>Get the software from the <a href="http://www.gvsig.com/en/products/gvsig-desktop/development-versions-downloads" target="_blank"><em>Development versions download</em></a> section at <a href="http://www.gvsig.com" target="_blank">gvsig.com</a></li>
+                            <li>The installable version is recommended</li>
                             <li>But you can also use the portable version (no installation required)</li>
                         </ul>
                     </section>
@@ -95,9 +95,58 @@
                         <p>Download and install from <a href="https://cran.r-project.org/">CRAN</a></p>
                     </section>
                     <section>
-                        <h2>Rexternal (gvSIG plugin)</h2>
-                        <p>bla bla blah</p>
+                        <h2>gvSIG-Rexternal (gvSIG plugin)</h2>
+                        <ul>
+                            <li>Download from <a href="https://github.com/dispiste/gvSIG-rexternal">the plugin Github repo</a>. You need <a href="https://github.com/dispiste/gvSIG-rexternal/blob/master/dist/gvSIG-desktop-2.3.0-org.gvsig.rexternal.app.mainplugin-1.0.0-1-testing-all-all-j1_7.gvspkg?raw=true">this .gvspkg file</a></li>
+                            <li>Install using gvSIG <em>Add-ons manager</em> (Menu: <em>Tools</em> -> <em>Add-ons manager)</em></li>
+                            <li>Choose <em>Installation from file</em> to install the downloaded .gvspkg file</li>
+                            <li>Select Rexternal from the list of available plugins</li>
                     </section>
+                    <section>
+                        <h2>gvSIG-Rexternal (II)</h2>
+                        <p>Test that RExternal is correctly installed by launching <em>RShell</em> using the gvSIG <em>Scripting
+                           launcher</em></p>
+                        <img data-src="img/scripting-launcher0.png">
+                    </section>
+                    <section>
+                        <h2>gvSIG-Rexternal (III)</h2>
+                        <p>It should open a new R console</p>
+                        <img data-src="img/new-rconsole.png">
+                        <p>Check the next slide if you find any problem</p>
+                    </section>
+                    <section>
+                        <h2>gvSIG-Rexternal (IV)</h2>
+                        <ul>
+                            <li>RExternal tries to guess the R installation folder, but you may need
+                           to manually configure it</li>
+                            <li>If needed, edit the file <code>gvSIG/extensiones/org.gvsig.rexternal.app.mainplugin/rpath.properties</code>
+                            within your gvSIG installation folder</li>
+                            <li>You need to write the full path to the R executable, as shown
+                            in the examples</li>
+                        </ul>
+                        <pre><code>
+# File: gvSIG/extensiones/org.gvsig.rexternal.app.mainplugin/rpath.properties
+# keep this empty to search R binary in current PATH
+R_BIN_PATH=
+
+## You can manually set the path to the R binary. Examples:
+#
+# Typical path for Linux:
+# R_BIN_PATH=/usr/bin/R
+# Typical path for Windows 64 bits:
+# R_BIN_PATH=c:\\Program Files\\R\\R-3.2.3\\bin\\x64\\R.exe
+# Typical path for Windows 32 bits:
+# R_BIN_PATH=c:\\Program Files\\R\\R-3.2.3\\bin\\x32\\R.exe
+
+## Note that in Windows, the path to R will likely change when
+## you update R to a newer version!!!!!
+
+## You can also use an internally-installed R instance
+# R_BIN_PATH=R/bin/R
+                        </code></pre>
+                        
+                    </section>
+
                     <section>
                         <h2>R packages</h2>
                         <p>Install the following R packages: rgdal, sp and raster.</p><p>Type in R console:</p>
@@ -108,6 +157,12 @@ install.packages("rgdal")
                         </code></pre>
                     </section>
                 </section>
+                <section>
+                    <h2>Work in progress...</h2>
+                    <p>The rest of the course documentation will be
+                       available later in this same URL</p>
+                </section>
+                <!--
 				<section>
                     <section>
                         <h2>Introduction to gvSIG</h2>
@@ -164,6 +219,7 @@ install.packages("rgdal")
                         <p>bla bla blah</p>
                     </section>
                 </section>
+                -->
 			</div>
 		</div>
 
