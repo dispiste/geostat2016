@@ -101,6 +101,7 @@
                             <li>Install using gvSIG <em>Add-ons manager</em> (Menu: <em>Tools</em> -> <em>Add-ons manager)</em></li>
                             <li>Choose <em>Installation from file</em> to install the downloaded .gvspkg file</li>
                             <li>Select Rexternal from the list of available plugins</li>
+                            <li>Note that you <em>may</em> need to execute gvSIG as <em>Administrator</em> in order to install plugins in Windows</li>
                     </section>
                     <section>
                         <h2>gvSIG-Rexternal (II)</h2>
@@ -157,12 +158,7 @@ install.packages("rgdal")
                         </code></pre>
                     </section>
                 </section>
-                <section>
-                    <h2>Work in progress...</h2>
-                    <p>The rest of the course documentation will be
-                       available later in this same URL</p>
-                </section>
-                <!--
+                
 				<section>
                     <section>
                         <h2>Introduction to gvSIG</h2>
@@ -177,31 +173,192 @@ install.packages("rgdal")
                         </ul>
                     </section>
                     <section>
-                        <h2>title</h2>
-                        <p>bla bla blah</p>
+                        <h2>Overview</h2>
+                        <ul>
+                            <li>gvSIG is a desktop geographic information system (GIS) application</li>
+                            <li>Available for Linux, Windows and Mac</li>
+                            <li>Translated to 18 languages</li>
+                            <li>Long history: first version released on 2004</li>
+                            <li>GPL3 license</li>
+                        </ul>
                     </section>
                     <section>
-                        <h2>title</h2>
-                        <p>bla bla blah</p>
+                        <h2>Overview (II)</h2>
+                        <ul>
+                            <li>Vector and raster data support</li>
+                            <li>Support for data bases, remote services (OGC's WMS, WMTS, WFS, WCS, etc) and other tile providers (OSM/Map Quest, Google, etc)</li>
+                            <li>Vector editing capabilities</li>
+                            <li>3D visualization</li>
+                            <li>Map composer</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Overview (III)</h2>
+                        <ul>
+                            <li>Geoprocessing tools and process modeller</li>
+                            <li>Easily extensible using the integrated scripting framework and the Add-on manager</li>
+                            <li>Different scripting languages supported (Python/Jython, Groovy, R/Renjin, Javascript and Scala)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>gvSIG documents</h2>
+                        <p><img data-src="img/overview1.png"></p>
+                    </section>
+                    <section>
+                        <h2>gvSIG documents</h2>
+                        <ul>
+                            <li>Views: data visualization, processing and editing</li>
+                            <li>Table: alphanumeric information visualization/editing</li>
+                            <li>Map: map composition, printing and high quality exporting</li>
+                            <li>Charts: create simple charts</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Views: Add layer</h2>
+                        <p><img data-src="img/view-add-layer1.png"></p>
+                    </section>
+                    <section>
+                        <h2>Vector data</h2>
+                        <ul>
+                            <li>Advanced symbology and labelling</li>
+                            <li>Lots of formats supported: SHP, PostGIS, DXF, DGN, GML, KML, LAS (LIDAR), CSV and Excel points...</li>
+                            <li>Plus all the formats supported by OGR</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Add layer: files</h2>
+                        <p><img data-src="img/add-layer1.png"></p>
+                    </section>
+                    <section>
+                        <h2>Symbol library</h2>
+                        <p><img data-src="img/symbol-library1.png"></p>
+                    </section>
+                    <section>
+                        <h2>Symbol library</h2>
+                        <p><img data-src="img/symbol-library2.png"></p>
+                    </section>
+                    <section>
+                        <h2>Raster data</h2>
+                        <ul>
+                            <li>Advanced symbology and labelling</li>
+                            <li>Lots of formats supported: SHP, PostGIS, DXF, DGN, GML, KML, LAS (LIDAR), CSV and Excel points...</li>
+                            <li>Plus all the formats supported by OGR</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>WMTS layers</h2>
+                        <p><img data-src="img/wmts-layer.png"></p>
+                    </section>
+                    <section>
+                        <h2>3D views</h2>
+                        <ul>
+                            <li>Creates <b>3D views from 2D views</b> (layers, symbology, etc)</li>
+                            <li>Viewport and layer <b>synchronization</b> between views</li>
+                            <li><b>Spheric</b> and <b>flat</b> modes</li>
+                            <li>Anaglyph mode</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>3D views: LIDAR data</h2>
+                        <video data-src="https://www.youtube.com/watch?v=-do5RfpJRCY"</video>
+                    </section>
+                    <section>
+                        <h2>3D views: vector extrusion</h2>
+                        <video data-src="https://www.youtube.com/watch?v=gBVRxBF9PJQ"</video>
+                    </section>
+                    <section>
+                        <h2>Geoprocessing</h2>
+                        <p><img data-src="img/geoprocessing-toolbox.png"></p>
+                    </section>
+                    <section>
+                        <h2>Geprocessing</h2>
+                        <ul>
+                            <li>Raster and vector processing tools</li>
+                            <li>355 tools available (including Sextante)</li>
+                            <li>General purpose and specific (hydrology, forestry, etc) tools</li>
+                            <li>More tools available as plugins: <a href="">JGrass tools (forestry, LIDAR, hydrology...)</a></li>
+                            <li>Creation of new tools is simple (Python, Java, R...)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Process modeller</h2>
+                        <p><img data-src="img/geoprocess-modeler1.png"></p>
+                    </section>
+                    <section>
+                        <h2>Process modeller</h2>
+                        <p><img data-src="img/geoprocess-modeler2.png"></p>
+                    </section>
+                    <section>
+                        <h2>Process modeller</h2>
+                        <ul>
+                            <li>Simple while powerful tool to define models or automate processing flows</li>
+                            <li>Useful for streamlining complex analysis</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Scripting framework</h2>
+                        <ul>
+                            <li>Useful for extending gvSIG or automate tasks</li>
+                            <li>Allows to create:</li>
+                            <ul>
+                                <li>new buttons, menu entries, forms</li>
+                                <li>new geoprocessing tools (and use them in the modeller)</li>
+                            </ul>
+                            <li>Integrated scripting composer and launcher</li>
+                            <li>Integrated console (Python)</li>
+                            <li>Simplifies creation of new gvSIG plugins</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Scripting framework</h2>
+                        <p><img data-src="img/scripting-composer.png"></p>
                     </section>
                 </section>
 				<section>
                     <section>
                         <h2>Interacting with R</h2>
+
                         <ul>
-                            <li>bla</li>
-                            <li>bla</li>
+                            <li>Two different R plugins in gvSIG:</li>
+                            <ul>
+                                <li>Renjin (Java based R implementation)</li>
+                                <li>RExternal plugin (uses an external R process)</li>
+                            </ul>
+                            <li>They offer totally different possibilities and limitations</li>
                         </ul>
                     </section>
                     <section>
-                        <h2>title</h2>
-                        <p>bla bla blah</p>
+                        <h2>Renjin</h2>
+                        <ul>
+                            <li>Integrated in the gvSIG Scripting framework</li>
+                            <li>Makes possible to control or automate gvSIG from an R script (layer loading, accessing to layer values, etc)</li>
+                            <li>Limitations:</li>
+                            <ul>
+                                <li>Only a small fraction of the existing R packages are available on Renjin</li>
+                                <li>For the moment, no direct way to load R data frames as gvSIG tables or accessing
+                                   gvSIG tables as R data frames</li>
+                            </ul>
+                        </ul>
                     </section>
                     <section>
-                        <h2>title</h2>
-                        <p>bla bla blah</p>
+                        <h2>RExternal plugin</h2>
+                        <ul>
+                            <li>Allows to launch R scripts from gvSIG</li>
+                            <li>Runs as a external R native process</li>
+                            <li>Provides an easy way to pass gvSIG layers as inputs to the R script and to
+                                load R outputs as gvSIG layers</li>
+                            <li>R scripts can be registered as gvSIG Geoprocesses and included in gvSIG models</li>
+                            <li>Any R package can be used</li>
+                            <li>Requires a small script declaration (written in Python) per each R script</li>
+                        </ul>
                     </section>
                 </section>
+                <section>
+                    <h2>Work in progress...</h2>
+                    <p>The rest of the course documentation will be
+                       available later in this same URL</p>
+                </section>
+                <!--
 				<section>
                     <section>
                         <h2>Case study</h2>
