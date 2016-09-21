@@ -52,8 +52,8 @@
                         <li>Software installation</li>
                         <li>Introduction to gvSIG</li>
                         <li>Interacting with R</li>
-                        <li>Case study</li>
-                        <li>Getting documentation</li>
+                        <li>Exercises</li>
+                        <!--<li>Getting documentation</li> -->
                     </ul>
                 </section>
 				<section>
@@ -146,6 +146,14 @@ R_BIN_PATH=
 # R_BIN_PATH=R/bin/R
                         </code></pre>
                         
+                    </section>
+                    <section>
+                        <h2>Install extra symbol libraries (gvSIG plugins)</h2>
+                        <ul>
+                            <li>Install using gvSIG <em>Add-ons manager</em> (Menu: <em>Tools</em> -> <em>Add-ons manager)</em></li>
+                            <li>Choose <em>Standard installation</em></li>
+                            <li>Install all the available symbol libraries</li>
+                            <li>Note that you <em>may</em> need to execute gvSIG as <em>Administrator</em> in order to install plugins in Windows</li>
                     </section>
 
                     <section>
@@ -258,13 +266,21 @@ install.packages("rgdal")
                             <li>Anaglyph mode</li>
                         </ul>
                     </section>
+                    <!--
+                    <section data-background-iframe="https://youtube.com/embed/-do5RfpJRCY?autoplay=1&controls=0&showinfo=0&autohide=1">
+                        <h2>3D views: LIDAR data</h2>
+                    </section> -->
                     <section>
                         <h2>3D views: LIDAR data</h2>
-                        <video data-src="https://www.youtube.com/watch?v=-do5RfpJRCY"</video>
+                        <iframe height="600" width="1000" 
+                            src="https://youtube.com/embed/-do5RfpJRCY?autoplay=0&controls=1&showinfo=0&autohide=1"></iframe>
+                        <!-- <iframe height="600" width="1000" 
+                            src="https://youtube.com/embed/-do5RfpJRCY?autoplay=1&controls=0&showinfo=0&autohide=1"></iframe> -->
                     </section>
                     <section>
                         <h2>3D views: vector extrusion</h2>
-                        <video data-src="https://www.youtube.com/watch?v=gBVRxBF9PJQ"</video>
+                        <iframe height="600" width="1000" 
+                            src="https://youtube.com/embed/gBVRxBF9PJQ?autoplay=0&controls=1&showinfo=0&autohide=1"></iframe>
                     </section>
                     <section>
                         <h2>Geoprocessing</h2>
@@ -276,7 +292,7 @@ install.packages("rgdal")
                             <li>Raster and vector processing tools</li>
                             <li>355 tools available (including Sextante)</li>
                             <li>General purpose and specific (hydrology, forestry, etc) tools</li>
-                            <li>More tools available as plugins: <a href="">JGrass tools (forestry, LIDAR, hydrology...)</a></li>
+                            <li>More tools available as plugins: <a href="https://github.com/moovida/hydrologis4gvsig">JGrass tools</a> (forestry, LIDAR, hydrology...)</li>
                             <li>Creation of new tools is simple (Python, Java, R...)</li>
                         </ul>
                     </section>
@@ -291,7 +307,7 @@ install.packages("rgdal")
                     <section>
                         <h2>Process modeller</h2>
                         <ul>
-                            <li>Simple while powerful tool to define models or automate processing flows</li>
+                            <li>Simple while powerful tool to define models or automating processing flows</li>
                             <li>Useful for streamlining complex analysis</li>
                         </ul>
                     </section>
@@ -319,7 +335,7 @@ install.packages("rgdal")
                         <h2>Interacting with R</h2>
 
                         <ul>
-                            <li>Two different R plugins in gvSIG:</li>
+                            <li>Two different R plugins (and approaches) in gvSIG:</li>
                             <ul>
                                 <li>Renjin (Java based R implementation)</li>
                                 <li>RExternal plugin (uses an external R process)</li>
@@ -344,39 +360,295 @@ install.packages("rgdal")
                         <h2>RExternal plugin</h2>
                         <ul>
                             <li>Allows to launch R scripts from gvSIG</li>
-                            <li>Runs as a external R native process</li>
+                            <li>Runs as a external R native process (so any R package can be used)</li>
                             <li>Provides an easy way to pass gvSIG layers as inputs to the R script and to
                                 load R outputs as gvSIG layers</li>
                             <li>R scripts can be registered as gvSIG Geoprocesses and included in gvSIG models</li>
-                            <li>Any R package can be used</li>
-                            <li>Requires a small script declaration (written in Python) per each R script</li>
+                            <li>Limitations:</li>
+                            <ul>
+                                <li>Requires a small script declaration (written in Python) per each R script</li>
+                                <li>Data interchange is limited to input/output layers/tables</li>
+                            </ul>
                         </ul>
                     </section>
                 </section>
                 <section>
-                    <h2>Work in progress...</h2>
-                    <p>The rest of the course documentation will be
-                       available later in this same URL</p>
+                    <h2>Exercises</h2>
+                    <p>Download and uncompres the
+                      <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip">sample data for the exercises</a></p>
                 </section>
-                <!--
 				<section>
                     <section>
-                        <h2>Case study</h2>
+                        <h2>Exercises Block 1</h2>
+                        <p>Goal: getting familiar with gvSIG basics</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
                         <ul>
-                            <li>bla</li>
-                            <li>bla</li>
+                            <li>Create a new view: <em>Project Manager -> View -> New</em></li>
+                            <li>Change some View properties:</li>
                         </ul>
                     </section>
                     <section>
-                        <h2>title</h2>
-                        <p>bla bla blah</p>
+                        <h2>Exercise 1: Views and data</h2>
+                        <p><img data-src="img/view-properties1.png"></p>
                     </section>
                     <section>
-                        <h2>title</h2>
-                        <p>bla bla blah</p>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Change some View properties:</li>
+                            <ul>
+                                <li>Set a meaningful name: Spain</li>
+                                <li>Configure a proper reference system for the view. We'll work with Spain data, so we'll use
+                                    UTM zone 30N with ETRS89 datum (code EPSG:25830)</li>
+                                    <li>It is important to set the CRS before loading any layer</li>
+                            </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <p><img data-src="img/view-properties-crs1.png"></p>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Load some vector layers</li>
+                        </ul>
+                        <p><img data-src="img/view-add-layer1.png"></p>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Load all the layers under the <em>bcn500_cnig</em> folder</li>
+                            <li>They contain information about:</li>
+                            <ul>
+                                <li>Points: airports</li>
+                                <li>Lines:  motorways, primary and secondary roads</li>
+                                <li>Polygons: main agglomerations</li>
+                            </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Apply proper symbology to each layers (select layer in TOC & then double click on it)</li>
+                            <li>You can define your own symbology or use the symbol library</li>
+                            <li>Suggestion: use OSM symbols for roads and airports</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>You can load an online satellite image as background</li>
+                            <li>Go to <em>Add layer -> WMTS</em></li>
+                            <li>Use service <code>http://www.ign.es/wmts/pnoa-ma?request=GetCapabilities&service=WMTS</code></li>
+                            <li>Connect to the service and follow the wizard</li>
+                            <li>Choose the proper reference system (EPSG:25830)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Reorder the layers on TOC:</li>
+                            <ul>
+                                <li>move the satellite image and the polygon layer to the bottom</li>
+                                <li>move the airport layer to the top</li>
+                                <li>order the roads by importance</li>
+                            </ul>
+                            <li>You can also set the secondary roads layer to be only visible at a certain scale (on layer properties)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                            <p><img data-src="img/symbolization_result.jpg"></p>
+                        <!--    <p>It should look like this</p> -->
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Create a 3D spheric view</li>
+                            <li>Use terrain exaggeration to make it more impressive</li>
+                            <li>Hints:</li>
+                            <ul>
+                                <li>You can use the mouse and shift keys to navigate faster</li>
+                                <li>You'll see a reprojection artifact in the WMTS layer. You can disable it
+                                 (as there is a built-in satellite image on the 3D view) or create the 2D
+                                 view using EPSG:4326 to avoid this artifact</li>
+                            </ul>
+                            <li>Use the <em>Animation manager</em> to create a visualization</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                        <ul>
+                            <li>Use the <em>Animation manager</em> to create a visualization</li>
+                            <li>Set at least 5 animation steps</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 1: Views and data</h2>
+                            <p><img data-src="img/symbolization-result3d.jpg"></p>
                     </section>
                 </section>
-                -->
+				<section>
+                    <section>
+                        <h2>Exercises Block 2</h2>
+                        <p>Goal: Demonstrate the geoprocessing toolbox</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <p>We have some information about species distribution (from the SPANISH INVENTORY OF TERRESTRIAL SPECIES)
+                        and want to learn
+                        about the habitat preferences of a particular species (Otis tarda).</p>
+                        <p>We also have information about land cover and elevation</p>
+                    </section>
+                    <section data-background-image="img/Otis_tarda,_Castuera,_Estremadura,_Spain_1.jpg">
+                        <h2>Hi, I am Otis tarda!!</h2>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p style="color:black">Image: Francesco Veronesi (CC BY-SA 2.0)</p>
+                    </section>
+                    <section data-background-image="img/Drofa_otis_tarda.jpg" data-background-size="600px">
+                        <h2>I am also Otis tarda</h2>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p>&nbsp;</p>
+                        <p style="color:black">Image: Governor of Volgograd Oblast (CC BY-SA 3.0)</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>First, we need to load the species distribution information</li>
+                            <li>We have a shapefile defining a reference grid and a CSV that defines in which cells of
+                            the grid the species is present</li>
+                            <li>Load the layer Malla10x10_MarTierra_p.shp</li>
+                            <li>Go to Project Manager and create a new table to load the CSV (otis_tarda_latin1.csv or
+                            (otis_tarda_utf8.csv)</li>
+                            <li>Hints:</li>
+                            <ul>
+                                <li>When loading the table, go to properties and select Profile: Excel</li>
+                                <li>Use the latin1 csv in Windows and utf8 otherwise</li>
+                                <li>Or choose the proper encoding in advanced properties tab</li>
+                            </ul>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Now we need to relate the shp with the csv information, using the Join tool</li>
+                            <li>From the newly created table, go to menu Table -> Create join </li>
+                            <li>Choose the SHP as the first data store to join, the csv as the second one</li>
+                            <li>The fields containing the related keys are CUARDICULA and CUTM10X10.</li>
+                            <li>We'll only need the Grupo, Nombre, Genero and Especie fields from the CSV</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Now we want to select only the cells with species presence</li>
+                            <li>On the joined layer, use tool Select By Attribute (menu: Selection)</li>
+                            <li>Select the records having Otis tarda as name, creating a new selection set</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Now we'll export the selected cells to a new layer</li>
+                            <li>From the view TOC, right click on the joined layer and select Export to...</li>
+                            <li>Export to a new SHP, including only selected records</li>
+                            <li>Performance tip: do some cleaning, hide or remove all the previous layers</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Now we want to know in which types of land cover the species can be found</li>
+                            <li>We'll cross the information and get some statistics</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Load clc2006_250 raster layer, containing land cover information for the year 2016 from the European dataset Corine Land Cover</li>
+                            
+                            <li>There are two equivalent class codes</li>
+                                <ul>
+                                    <li>The one used in the raster file (from 1 to 44)</li>
+                                    <li>A hierarchical code (1, 1.1, 1.1.1, 1.1.2, 2, 2.1, etc)</li>
+                                </ul>
+                            <li>There is a txt file next to the layer, providing information about the class definitions and code equivalences</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Open the Geoprocessing toolbox (menu: Tools: Geoprocessing: Toolbox)</li>
+                            <li>There is a large list of processes available</li>
+                            <li>You can filter them using the search box (down)</li>
+                            <li>Some of them are disabled because there is no suitable input layer for them in the view</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <p><img data-src="img/crop-grid.png"></p>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Use the <em>Crop grid with polygon layer</em> algorithm to extract the land cover
+                            classes that overlap with the species presence areas</li>
+                            <li>Then use the <em>Class stastics</em> algorithm to get the frequence of each
+                            land cover class in the presence areas</li>
+                            <li>Hint: The output of the Class statistics algorithm is a table, you can open it from the
+                            Project Manager</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <ul>
+                            <li>Now you can use the elevation data for performing a similar analysis</li>
+                            <li>Load the elevation data (ign_mdt200)</li>
+                            <li>Use the Geoprocessing Toolbox to calculate the slope from the elevation (as slope usually influences species habitats)</li>
+                            <li>Think yourself about an appropiate methodology to analyse this information</li>
+                            <li>Hint: in addition to itself is not very important Now you can use the elevation data for performing a similar analysis</li>
+                        </ul>
+                    </section>
+                </section>
+				<section>
+                    <section>
+                        <h2>Exercises Block 3</h2>
+                        <p>Goal: Demonstrate Python scripting and R interfacing</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <ul>
+                            <li>Open the scripting composer</li>
+                            <li>Click on System tab and open org.gvsig.rexternal.app.mainplugin group</li>
+                            <li>Open the test/test_rprocess.py script</li>
+                            <li>It is a simple example that just executes the test/data/test.r script</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <ul>
+                            <li>Execute the script. This will register a new R process on the Toolbox</li>
+                            <li>Execute the new process from the Toolbox</li>
+                            <li>Study the code and understand what's going on</li>
+                            <li>Create a new r script and a new rprocess to perform something more useful (such as doing a more
+                            advanced statistical analysis of the land cover frequencies calculated on Exercise 2</li>
+                        </ul>
+                    </section>
+                </section>
 			</div>
 		</div>
 
