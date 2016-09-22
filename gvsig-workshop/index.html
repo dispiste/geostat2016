@@ -82,6 +82,7 @@
                             <li>Get the software from the <a href="http://www.gvsig.com/en/products/gvsig-desktop/development-versions-downloads" target="_blank"><em>Development versions download</em></a> section at <a href="http://www.gvsig.com" target="_blank">gvsig.com</a></li>
                             <li>The installable version is recommended</li>
                             <li>But you can also use the portable version (no installation required)</li>
+                            <li>If using Linux, choose the gvSIG version suitable for your Linux version (e.g. Ubuntu 16.04 vs 14.04)</li>
                         </ul>
                     </section>
                     <!--
@@ -97,7 +98,9 @@
                     <section>
                         <h2>gvSIG-Rexternal (gvSIG plugin)</h2>
                         <ul>
-                            <li>Download from <a href="https://github.com/dispiste/gvSIG-rexternal">the plugin Github repo</a>. You need <a href="https://github.com/dispiste/gvSIG-rexternal/blob/master/dist/gvSIG-desktop-2.3.0-org.gvsig.rexternal.app.mainplugin-1.0.0-1-testing-all-all-j1_7.gvspkg?raw=true">this .gvspkg file</a></li>
+                            <li>Download from <a href="https://github.com/dispiste/gvSIG-rexternal">the plugin Github repo</a>.
+                             You need
+                            <a href="https://github.com/dispiste/gvSIG-rexternal/raw/master/dist/gvSIG-desktop-2.3.0-org.gvsig.rexternal.app.mainplugin-1.0.1-2-testing-all-all-j1_7.gvspkg">this .gvspkg file</a></li>
                             <li>Install using gvSIG <em>Add-ons manager</em> (Menu: <em>Tools</em> -> <em>Add-ons manager)</em></li>
                             <li>Choose <em>Installation from file</em> to install the downloaded .gvspkg file</li>
                             <li>Select Rexternal from the list of available plugins</li>
@@ -248,9 +251,8 @@ install.packages("rgdal")
                     <section>
                         <h2>Raster data</h2>
                         <ul>
-                            <li>Advanced symbology and labelling</li>
-                            <li>Lots of formats supported: SHP, PostGIS, DXF, DGN, GML, KML, LAS (LIDAR), CSV and Excel points...</li>
-                            <li>Plus all the formats supported by OGR</li>
+                            <li>Uses GDAL to read most formats</li>
+                            <li>Analysis view, Color tables, histograms, etc</li>
                         </ul>
                     </section>
                     <section>
@@ -375,11 +377,12 @@ install.packages("rgdal")
                 <section>
                     <h2>Exercises</h2>
                     <p>Download and uncompres the
-                      <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip">sample data for the exercises</a></p>
+                      <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip">sample data</a>
+                      and <a href="https://github.com/dispiste/geostat2016/raw/master/scripts/scripts.zip">sample scripts</a> for the exercises</p>
                 </section>
 				<section>
                     <section>
-                        <h2>Exercises Block 1</h2>
+                        <h2>Exercise 1</h2>
                         <p>Goal: getting familiar with gvSIG basics</p>
                     </section>
                     <section>
@@ -492,7 +495,7 @@ install.packages("rgdal")
                 </section>
 				<section>
                     <section>
-                        <h2>Exercises Block 2</h2>
+                        <h2>Exercise 2</h2>
                         <p>Goal: Demonstrate the geoprocessing toolbox</p>
                     </section>
                     <section>
@@ -626,27 +629,203 @@ install.packages("rgdal")
                 </section>
 				<section>
                     <section>
-                        <h2>Exercises Block 3</h2>
-                        <p>Goal: Demonstrate Python scripting and R interfacing</p>
+                        <h2>Exercise 3</h2>
+                        <p>Goal: Demonstrate the gvSIG-R interface using RExternal plugin</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>We are going to learn how to integrate R scripts in the gvSIG Geoprocessing
+                        Toolbox and how to easily distribute them as new gvSIG plugins</p>
                     </section>
                     <section>
                         <h2>Exercise 3</h2>
                         <ul>
-                            <li>Open the scripting composer</li>
-                            <li>Click on System tab and open org.gvsig.rexternal.app.mainplugin group</li>
-                            <li>Open the test/test_rprocess.py script</li>
-                            <li>It is a simple example that just executes the test/data/test.r script</li>
+                            <li>First we'll study the structure and code of the provided sample plugins.
+                             Start by looking at the <code>geostatsplugin</code> folder. We'll have 4 components:</li>
+                            <ul>
+                                <li>The R script we want to integrate</li>
+                                <li>A bit of Python glue-code to declare the R script paramaters and methods</li>
+                                <li>An small <code>autorun.py</code> script to register the script in the Toolbox</li>
+                                <li>An empty <code>__init__.py</code> file</li>
+                            </ul>
+                            <li>There is also some .inf files but they are automatically created by gvSIG when the scripts
+                            are created</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Have a closer look to each file. In <code>test.r</code> script we have: 1) a function to load some
+                        libraries:</p>
+                        <pre><code>
+load_libraries <- function() {
+  library(rgdal)
+  library(raster)
+  return(1)
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Have a closer look to each file. In <code>test.r</code> script we have: 2) a doalmostnothing function
+                         which loads a vector layer and copies one raster from inrasterpathname to outrasterpathname:</p>
+                        <pre><code>
+doalmostnothing <- function(shpdsn, shpname, inrasterpathname, outrasterpathname){
+  shp<-readOGR(dsn=shpdsn,layer=shpname)
+  message("shp loaded")
+  rasterimage<-raster(inrasterpathname)
+  message("raster loaded")
+  writeRaster(rasterimage, filename=outrasterpathname, format="GTiff", overwrite=TRUE)
+  return (1)
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Have a closer look to each file. In gluecode.py we basically have: 1) some imports, a class
+                        declaration extending from RProcess class and an __init__ method defining the path to the
+                        rscript (and optionally the working directory):</p>
+                        <pre><code>
+import rlib
+reload(rlib)
+from rlib.process import *
+import os
+
+class TestProcess1(RProcess):
+    def __init__(self):
+        baseDir = os.path.dirname(os.path.abspath(__file__))
+        rscript = os.path.join(baseDir, "rscript.r")
+        RProcess.__init__(self, rscript, baseDir)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Have a closer look to each file. In gluecode.py we basically have: 2) a defineCharacteristics method
+                        with the declaration of the inputs and outputs:</p>
+                        <pre><code>
+    def defineCharacteristics(self):
+        # Process name
+        self.setName("Test R process1")
+        # Process group
+        self.setGroup("Geostat course")
+        params = self.getParameters() 
+        # Define an input vector parameter, named IN_VECTOR, of type polygon and make it mandatory
+        params.addInputVectorLayer("IN_VECTOR","Input vector layer", SHAPE_TYPE_POLYGON, True)
+
+        # Define an input raster parameter named IN_RASTER and make it mandatory
+        params.addInputRasterLayer("IN_RASTER","Input raster layer", True)
+
+        # Define an output raster layer, name "OUT_RASTER"
+        self.addOutputRasterLayer("OUT_RASTER", "Output raster")
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Have a closer look to each file. In gluecode.py we basically have: 3) a callRProcess method defining
+                        the methods of the R script to be called:</p>
+                        <pre><code>
+    def callRProcess(self, *args):
+        """
+        Calls the main method of the defined R script
+        """
+        self.R.call("load_libraries")
+        self.R.call("doalmostnothing", *args)
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <ul>
+                            <li>You could even omit callRProcess (then the main method of the R script would be called)</li>
+                            <li>You can also define more compex callRProcess methods if you want to someway transform or reorder
+                        some parameters (see the examples on the provided sample scripts)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Have a closer look to each file. In <code>autorun.py</code> script we instance the TestProcess1 that
+                        we previously declared in gluecode.py and we register it on the toolbox:</p>
+                        <pre><code>
+import gvsig
+from gluecode import *
+import gluecode
+
+process = gluecode.TestProcess1()
+process.selfregister("Scripting")
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>This is enough to have the R plugin available on the gvSIG toolbox and
+                        process modeller</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <p><img data-src="img/registered-rprocesses.png"></p>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>But we can do the same even with less code. Have a look to the <em>geostatsplugincompact</em> sample
+                        plugin. It only contains:</p>
+                        <ul>
+                            <li>The R script(s) to be integrated</li>
+                            <li>The autorun.py script, in which we do the declaration and registration of the
+                            R scripts altogether</li>
+                            <li>The empty __init__.py file</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Now you are ready to integrate your own scripts. Follow these steps</p>
+                        <ul>
+                            <li>Open the gvSIG scripting composer (Tools -> Development -> Scripting composer)</li>
+                            <li>Create a new folder (File -> New), type the name (it will be the name of your
+                            plugin) and select Type: Folder</li>
+                            <li>Create the empty __init__.py script (File -> New), type: Script, language: Python,
+                            save on the folder you just created</li>
                         </ul>
                     </section>
                     <section>
                         <h2>Exercise 3</h2>
                         <ul>
-                            <li>Execute the script. This will register a new R process on the Toolbox</li>
-                            <li>Execute the new process from the Toolbox</li>
-                            <li>Study the code and understand what's going on</li>
-                            <li>Create a new r script and a new rprocess to perform something more useful (such as doing a more
-                            advanced statistical analysis of the land cover frequencies calculated on Exercise 2</li>
+                            <li>Create the R script script (File -> New), type: Script, language: R. You can
+                            create it from scratch or you can paste an existing R script. You could also direclty copy
+                            the file in the right folder, wihtin
+                            <em>${HOME}/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/scripts/yourpluginname</em></li>
                         </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <ul>
+                            <li>Finally, create the autorun.py script (File -> New), type: Script, language: Python</li>
+                            <li>You need to create a class per each R script you want to integrate</li>
+                            <li>IMPORTANT: the name of the class MUST be unique (even across different plugins)</li>
+                            <li>In each class, you need to declare:</li>
+                            <ul>
+                                <li>the path to the R script and its parameters (within the defineCharacteristics method)</li>
+                                <li>the R functions to call (within the callRProcess method)</li>
+                            </ul>
+                            <li>And you need to write the registration code at the end of the file (outside any class declaration)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>Once you test and validate your plugin, you are ready to distribute it. It's very easy!!</p>
+                        <ul>
+                            <li>From the Scripting Composer, click on menu Tools -> Script package</li>
+                            <li>Choose the folder you created (which contains all the scripts)</li>
+                            <li>Review the form details (name, version...)</li>
+                            <li>And finally select the output folder and file name</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p>This creates a .gvspkg file, which can be easily installed on other computer using gvSIG's
+                        Add-on Manager</p>
+                        <p>You can also contact us to get your plugin included on the <em>Standard installation list</em>. In this
+                        way, your users will not need to download the package themselves</p>
+                    </section>
+                    <section>
+                        <h2>Exercise 3</h2>
+                        <p><img data-src="img/addon-manager.png"></p>
                     </section>
                 </section>
 			</div>
