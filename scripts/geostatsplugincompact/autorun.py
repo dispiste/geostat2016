@@ -37,13 +37,6 @@ class TestProcess2(RProcess):
 
         # Define an output raster layer, name "OUT_RASTER"
         self.addOutputRasterLayer("OUT_RASTER", "Output raster")
-        
-    def callRProcess(self, *args):
-        """
-        Calls the main method of the defined R script
-        """
-        self.R.call("load_libraries")
-        self.R.call("doalmostnothing", *args)
 
 class TestProcess3(RProcess):
     def defineCharacteristics(self):
@@ -63,10 +56,6 @@ class TestProcess3(RProcess):
 
         # Define an output raster layer, name "OUT_RASTER"
         self.addOutputRasterLayer("OUT_RASTER", "Output raster")
-        
-    def callRProcess(self, *args):
-        self.R.call("load_libraries")
-        self.R.call("doalmostnothing", *args)
 
 
 def main():
