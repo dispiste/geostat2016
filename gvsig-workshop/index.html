@@ -254,7 +254,7 @@ install.packages("rgdal")
                         <h2>Raster data</h2>
                         <ul>
                             <li>Uses GDAL to read most formats</li>
-                            <li>Analysis view, Color tables, histograms, etc</li>
+                            <li>Analysis view, colour tables, histograms, etc</li>
                         </ul>
                     </section>
                     <section>
@@ -415,9 +415,15 @@ install.packages("rgdal")
                 </section>
                 <section>
                     <h2>Exercises</h2>
-                    <p>Download and uncompres the
+<<<<<<< aa528610242fbd93900bf43fb92ff25f80853309
+                    <p>Download and uncompress the
                       <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip" target="_blank">sample data</a>
                       and <a href="https://github.com/dispiste/geostat2016/raw/master/scripts/scripts.zip" target="_blank">sample scripts</a> for the exercises</p>
+=======
+                    <p>Download and uncompress the
+                      <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip">sample data</a>
+                      and <a href="https://github.com/dispiste/geostat2016/raw/master/scripts/scripts.zip">sample scripts</a> for the exercises</p>
+>>>>>>> Spell corrections
                 </section>
 				<section>
                     <section>
@@ -590,8 +596,9 @@ install.packages("rgdal")
                             <li>Now we need to relate the shp with the csv information, using the Join tool</li>
                             <li>From the newly created table, go to menu Table -> Create join </li>
                             <li>Choose the SHP as the first data store to join, the csv as the second one</li>
-                            <li>The fields containing the related keys are CUARDICULA and CUTM10X10.</li>
-                            <li>We'll only need the Grupo, Nombre, Genero and Especie fields from the CSV</li>
+                            <li>The fields containing the related keys are <em>CUARDICULA</em> and <em>CUTM10X10</em>.</li>
+                            <li>We'll only need the <em>Grupo</em>, <em>Nombre</em>, <em>Genero</em>
+                             and <em>Especie</em> fields from the CSV</li>
                         </ul>
                     </section>
                     <section>
@@ -599,7 +606,7 @@ install.packages("rgdal")
                         <ul>
                             <li>Now we want to select only the cells with species presence</li>
                             <li>On the joined layer, use tool Select By Attribute (menu: Selection)</li>
-                            <li>Select the records having Otis tarda as name, creating a new selection set</li>
+                            <li>Select the records having <em>Otis tarda</em> as name, creating a new selection set</li>
                         </ul>
                     </section>
                     <section>
@@ -649,7 +656,7 @@ install.packages("rgdal")
                         <ul>
                             <li>Use the <em>Crop grid with polygon layer</em> algorithm to extract the land cover
                             classes that overlap with the species presence areas</li>
-                            <li>Then use the <em>Class stastics</em> algorithm to get the frequence of each
+                            <li>Then use the <em>Class statistics</em> algorithm to get the frequency of each
                             land cover class in the presence areas</li>
                             <li>Hint: The output of the Class statistics algorithm is a table, you can open it from the
                             Project Manager</li>
@@ -665,7 +672,7 @@ install.packages("rgdal")
                             <li>Now you can use the elevation data for performing a similar analysis</li>
                             <li>Load the elevation data (ign_mdt200)</li>
                             <li>Use the Geoprocessing Toolbox to calculate the slope from the elevation (as slope usually influences species habitats)</li>
-                            <li>Think yourself about an appropiate methodology to analyse this information</li>
+                            <li>Think yourself about an appropriate methodology to analyse this information</li>
                             <li>Hint: in addition to itself is not very important Now you can use the elevation data for performing a similar analysis</li>
                         </ul>
                     </section>
@@ -687,7 +694,7 @@ install.packages("rgdal")
                              Start by looking at the <code>geostatsplugin</code> folder. We'll have 4 components:</li>
                             <ul>
                                 <li>The R script we want to integrate</li>
-                                <li>A bit of Python glue-code to declare the R script paramaters and methods</li>
+                                <li>A bit of Python glue-code to declare the R script parameters and methods</li>
                                 <li>An small <code>autorun.py</code> script to register the script in the Toolbox</li>
                                 <li>An empty <code>__init__.py</code> file</li>
                             </ul>
@@ -778,7 +785,7 @@ class TestProcess1(RProcess):
                         <h2>Exercise 3</h2>
                         <ul>
                             <li>You could even omit callRProcess (then the main method of the R script would be called)</li>
-                            <li>You can also define more compex callRProcess methods if you want to someway transform or reorder
+                            <li>You can also define more complex callRProcess methods if you want to somehow transform or reorder
                         some parameters (see the examples on the provided sample scripts)</li>
                         </ul>
                     </section>
@@ -838,8 +845,8 @@ process.selfregister("Scripting")
                         <h2>Exercise 3</h2>
                         <ul>
                             <li>Create the R script script (File -> New), type: Script, language: R. You can
-                            create it from scratch or you can paste an existing R script. You could also direclty copy
-                            the file in the right folder, wihtin
+                            create it from scratch or you can paste an existing R script. You could also directly copy
+                            the file in the right folder, within
                             <em>${HOME}/gvSIG/plugins/org.gvsig.scripting.app.mainplugin/scripts/yourpluginname</em></li>
                         </ul>
                     </section>
