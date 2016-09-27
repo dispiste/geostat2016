@@ -85,26 +85,28 @@
                             <li>If using Linux, choose the gvSIG version suitable for your Linux version (e.g. Ubuntu 16.04 vs 14.04)</li>
                         </ul>
                     </section>
-                    <!--
-                    <section>
-                        <h2>JGrass (gvSIG plugin)</h2>
-                        <p>bla bla blah</p>
-                    </section>
-                    -->
                     <section>
                         <h2>R statistical software</h2>
-                        <p>Download and install from <a href="https://cran.r-project.org/">CRAN</a></p>
+                        <p>Download and install from <a href="https://cran.r-project.org/" target="_blank">CRAN</a></p>
                     </section>
                     <section>
                         <h2>gvSIG-Rexternal (gvSIG plugin)</h2>
                         <ul>
-                            <li>Download from <a href="https://github.com/dispiste/gvSIG-rexternal">the plugin Github repo</a>.
-                             You need
-                            <a href="https://github.com/dispiste/gvSIG-rexternal/raw/master/dist/gvSIG-desktop-2.3.0-org.gvsig.rexternal.app.mainplugin-1.0.1-2-testing-all-all-j1_7.gvspkg">this .gvspkg file</a></li>
+                            <li>Download from the <em>dist</em> folder of <a href="https://github.com/dispiste/gvSIG-rexternal" target="_blank">the plugin Github repo</a>.
+                            You need the last available .gvspkg file
+                            (<a href="https://github.com/dispiste/gvSIG-rexternal/raw/master/dist/gvSIG-desktop-2.3.0-org.gvsig.rexternal.app.mainplugin-1.0.2-6-testing-all-all-j1_7.gvspkg" target="_blank">version 1.0.2-6</a> as of October 2016)</li>
                             <li>Install using gvSIG <em>Add-ons manager</em> (Menu: <em>Tools</em> -> <em>Add-ons manager)</em></li>
                             <li>Choose <em>Installation from file</em> to install the downloaded .gvspkg file</li>
                             <li>Select Rexternal from the list of available plugins</li>
                             <li>Note that you <em>may</em> need to execute gvSIG as <em>Administrator</em> in order to install plugins in Windows</li>
+                    </section>
+                    <section>
+                        <h2>gvSIG-Rexternal (gvSIG plugin)</h2>
+                        <p><img data-src="img/add-on-from-file.png"></p>
+                    </section>
+                    <section>
+                        <h2>gvSIG-Rexternal (gvSIG plugin)</h2>
+                        <p><img data-src="img/add-on-rexternal.png"></p>
                     </section>
                     <section>
                         <h2>gvSIG-Rexternal (II)</h2>
@@ -294,7 +296,7 @@ install.packages("rgdal")
                             <li>Raster and vector processing tools</li>
                             <li>355 tools available (including Sextante)</li>
                             <li>General purpose and specific (hydrology, forestry, etc) tools</li>
-                            <li>More tools available as plugins: <a href="https://github.com/moovida/hydrologis4gvsig">JGrass tools</a> (forestry, LIDAR, hydrology...)</li>
+                            <li>More tools available as plugins: <a href="https://github.com/moovida/hydrologis4gvsig" target="_blank">JGrass tools</a> (forestry, LIDAR, hydrology...)</li>
                             <li>Creation of new tools is simple (Python, Java, R...)</li>
                         </ul>
                     </section>
@@ -359,13 +361,27 @@ install.packages("rgdal")
                         </ul>
                     </section>
                     <section>
+                        <h2>Renjin</h2>
+                        <ul>
+                            <li>Installation of packages works in a different way, compared to the regular R implementation</li>
+                            <li>Packages get automatically installed when the <em>library()</em> command is used</li>
+                            <li>The availability of each package for Renjin can be checked on
+                            <a href="http://packages.renjin.org/" target="_blank">this page</a></li>
+                        </ul>
+                    </section>
+                    <section>
                         <h2>RExternal plugin</h2>
                         <ul>
                             <li>Allows to launch R scripts from gvSIG</li>
-                            <li>Runs as a external R native process (so any R package can be used)</li>
+                            <li>Runs as an external R native process (so any R package can be used)</li>
                             <li>Provides an easy way to pass gvSIG layers as inputs to the R script and to
                                 load R outputs as gvSIG layers</li>
                             <li>R scripts can be registered as gvSIG Geoprocesses and included in gvSIG models</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>RExternal plugin</h2>
+                        <ul>
                             <li>Limitations:</li>
                             <ul>
                                 <li>Requires a small script declaration (written in Python) per each R script</li>
@@ -373,12 +389,35 @@ install.packages("rgdal")
                             </ul>
                         </ul>
                     </section>
+                    <section>
+                        <h2>RExternal plugin</h2>
+                        <ul>
+                            <li>The integrated R script can be very easily packaged and distributed as gvSIG
+                                plugin</li>
+                            <li>The user interface for the process is automatically built (based on the
+                            declaration of parameters)</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>RExternal plugin</h2>
+                        <p><img data-src="img/registered-rprocesses.png"></p>
+                    </section>
+                    <section>
+                        <h2>RExternal plugin</h2>
+                        <p><img data-src="img/process-ui.png"></p>
+                    </section>
+                    <section>
+                        <h2>RExternal plugin</h2>
+                        <ul>
+                            <p>See Exercise 3 for detailed documentation and usage examples</p>
+                        </ul>
+                    </section>
                 </section>
                 <section>
                     <h2>Exercises</h2>
                     <p>Download and uncompres the
-                      <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip">sample data</a>
-                      and <a href="https://github.com/dispiste/geostat2016/raw/master/scripts/scripts.zip">sample scripts</a> for the exercises</p>
+                      <a href="https://github.com/dispiste/geostat2016/raw/master/data/data.zip" target="_blank">sample data</a>
+                      and <a href="https://github.com/dispiste/geostat2016/raw/master/scripts/scripts.zip" target="_blank">sample scripts</a> for the exercises</p>
                 </section>
 				<section>
                     <section>
@@ -615,6 +654,10 @@ install.packages("rgdal")
                             <li>Hint: The output of the Class statistics algorithm is a table, you can open it from the
                             Project Manager</li>
                         </ul>
+                    </section>
+                    <section>
+                        <h2>Exercise 2</h2>
+                        <p><img data-src="img/otis_tarda_freq1.png"></p>
                     </section>
                     <section>
                         <h2>Exercise 2</h2>
